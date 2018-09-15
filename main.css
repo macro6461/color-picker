@@ -1,0 +1,85 @@
+body{
+  width: 100%;
+  height: auto;
+}
+
+.container{
+  width: 80%;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+.shirt-container{
+  width: 50%;
+  height: 50%;
+  display: block;
+  margin: auto;
+  margin-top: 100px;
+  position: relative;
+}
+
+.tshirt.mid-section{
+  display: inline-block;
+  margin: auto;
+  margin-top: 0px;
+  height: 100px;
+  width: 100px;
+  border: solid 1px black;
+  cursor: pointer;
+  position: absolute;
+  top: 20%;
+  left: 35%;
+  transform: rotate(135deg);
+  z-index: 10;
+}
+
+.tshirt.sleeve-left{
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border: solid 1px black;
+  cursor: pointer;
+  position: absolute;
+  top: 20%;
+  left: 35%;
+  transform: rotate(180deg);
+}
+
+.tshirt.sleeve-right{
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border: solid 1px black;
+  cursor: pointer;
+  position: absolute;
+  top:20%;
+  left: 35%;
+  transform: rotate(30deg);
+}
+
+.color{
+  cursor: pointer;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border: solid 1px black;
+  transition-duration: 0.5s;
+}
+
+.color:hover{
+  transform: scale(1.1);
+}
+
+.color-container{
+  margin-top: 100px;
+  text-align: center;
+}
+
+button{
+  color: white;
+  background-color: cadetblue;
+  border-radius: 5px;
+  margin-top: 200px;
+  padding: 10px;
+}
