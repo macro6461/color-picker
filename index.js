@@ -1,7 +1,10 @@
-var colorsArr = [];
 var allColors;
+var colorsArr = [];
+var colorsColorsArr = [];
 var leftSleeveArr=[];
+var leftLeftSleeveArr=[];
 var rightSleeveArr=[];
+var rightRightSleeveArr=[];
 var shirtParts;
 var shirtPart;
 
@@ -19,18 +22,23 @@ function getColors(){
 
 function selectColor(e){
   if (shirtPart){
-    if (shirtPart.classList.value.includes("mid-section")){
-      checkColorArray(e, colorsArr)
+    if (shirtPart.classList.value.includes("mid-section-section")){
+      checkColorArray(e, colorsColorsArr)
+    } else if (shirtPart.classList.value.includes("sleeve-left-left")){
+      checkColorArray(e, leftLeftSleeveArr)
+    } else if (shirtPart.classList.value.includes("sleeve-right-right")){
+      checkColorArray(e, rightRightSleeveArr)
     } else if (shirtPart.classList.value.includes("sleeve-left")){
       checkColorArray(e, leftSleeveArr)
-    } else {
+    } else if (shirtPart.classList.value.includes("sleeve-right")){
       checkColorArray(e, rightSleeveArr)
+    } else {
+      checkColorArray(e, colorsArr)
     }
   }
 }
 
 function checkColorArray(e, arr){
-
   if (!arr.includes(e.target.style.backgroundColor)){
     arr.unshift(e.target.style.backgroundColor)
     e.target.classList.add("clicked")
@@ -54,11 +62,29 @@ function selectShirtPart(e){
 
 function changeColor(arr){
 
-  if (shirtPart.classList.value.includes("mid-section")){
+  if (shirtPart.classList.value.includes("mid-section-section")){
     if (arr.length > 0){
-      document.getElementsByClassName("tshirt mid-section")[0].style.backgroundColor = arr[0]
+      document.getElementsByClassName("tshirt mid-section-section")[0].style.backgroundColor = arr[0]
     } else {
-      document.getElementsByClassName("tshirt mid-section")[0].style.backgroundColor = ''
+      document.getElementsByClassName("tshirt mid-section-section")[0].style.backgroundColor = ''
+    }
+  } else if (shirtPart.classList.value.includes("sleeve-left-left")){
+    if (arr.length > 0){
+      document.getElementsByClassName("tshirt sleeve-left-left")[0].style.backgroundColor = arr[0]
+    } else {
+      document.getElementsByClassName("tshirt sleeve-left-left")[0].style.backgroundColor = ''
+    }
+  } else if (shirtPart.classList.value.includes("sleeve-right-right")){
+    if (arr.length > 0){
+      document.getElementsByClassName("tshirt sleeve-right-right")[0].style.backgroundColor = arr[0]
+    } else {
+      document.getElementsByClassName("tshirt sleeve-right-right")[0].style.backgroundColor = ''
+    }
+  } else if (shirtPart.classList.value.includes("sleeve-right")){
+    if (arr.length > 0){
+      document.getElementsByClassName("tshirt sleeve-right")[0].style.backgroundColor = arr[0]
+    } else {
+      document.getElementsByClassName("tshirt sleeve-right")[0].style.backgroundColor = ''
     }
   } else if (shirtPart.classList.value.includes("sleeve-left")){
     if (arr.length > 0){
@@ -66,11 +92,11 @@ function changeColor(arr){
     } else {
       document.getElementsByClassName("tshirt sleeve-left")[0].style.backgroundColor = ''
     }
-  } else if (shirtPart.classList.value.includes("sleeve-right")){
+  } else if (shirtPart.classList.value.includes("mid-section")){
     if (arr.length > 0){
-      document.getElementsByClassName("tshirt sleeve-right")[0].style.backgroundColor = arr[0]
+      document.getElementsByClassName("tshirt mid-section")[0].style.backgroundColor = arr[0]
     } else {
-      document.getElementsByClassName("tshirt sleeve-right")[0].style.backgroundColor = ''
+      document.getElementsByClassName("tshirt mid-section")[0].style.backgroundColor = ''
     }
   }
 }
