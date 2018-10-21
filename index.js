@@ -7,6 +7,44 @@ var rightSleeveArr=[];
 var rightRightSleeveArr=[];
 var shirtParts;
 var shirtPart;
+var hexArr=[];
+var context;
+
+function drawHex(){
+  debugger
+  var numberOfSides = 24,
+      size = 70,
+      Xcenter = 70,
+      Ycenter = 70;
+
+
+      var canvas = document.getElementById("abcdef");
+        var ctx = canvas.getContext("2d");
+        var radius = canvas.height / 2;
+
+        context = ctx
+
+
+  ctx.beginPath();
+  ctx.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));
+
+  for (var i = 1; i <= numberOfSides;i += 1) {
+      ctx.lineTo (Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+  }
+
+  ctx.strokeStyle = "#0000000";
+  ctx.fillStyle = '#ffffff';
+  ctx.fill();
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    drawHex()
+    getColors()
+});
+
 
 function getColors(){
   allColors = document.getElementsByClassName("color")
@@ -32,6 +70,8 @@ function selectColor(e){
       checkColorArray(e, leftSleeveArr)
     } else if (shirtPart.classList.value.includes("sleeve-right")){
       checkColorArray(e, rightSleeveArr)
+    } else if (shirtPart.classList.value.includes("hex")){
+      checkColorArray(e, hexArr)
     } else {
       checkColorArray(e, colorsArr)
     }
@@ -62,7 +102,17 @@ function selectShirtPart(e){
 
 function changeColor(arr){
 
-  if (shirtPart.classList.value.includes("mid-section-section")){
+  if (shirtPart.classList.value.includes("hex")){
+    if (arr.length > 0){
+      context.fillStyle = arr[0]
+      context.fill()
+    } else {
+      context.strokeStyle = "#0000000";
+          context.fillStyle = '#ffffff';
+          context.fill();
+          context.stroke();
+    }
+  } else if (shirtPart.classList.value.includes("mid-section-section")){
     if (arr.length > 0){
       document.getElementsByClassName("tshirt mid-section-section")[0].style.backgroundColor = arr[0]
     } else {
@@ -103,9 +153,13 @@ function changeColor(arr){
 
 function clearAll(){
   debugger
-  colorsArr = []
-  leftSleeveArr=[]
-  rightSleeveArr=[]
+  colorsArr = [];
+  colorsColorsArr = [];
+  leftSleeveArr=[];
+  leftLeftSleeveArr=[];
+  rightSleeveArr=[];
+  rightRightSleeveArr=[];
+  hexArr=[];
   shirtParts = ''
   shirtPart = ''
   for (i = 0; i < allColors.length; i++){
@@ -116,8 +170,11 @@ function clearAll(){
   document.getElementsByClassName("tshirt mid-section")[0].style.backgroundColor = ''
   document.getElementsByClassName("tshirt sleeve-left")[0].style.backgroundColor = ''
   document.getElementsByClassName("tshirt sleeve-right")[0].style.backgroundColor = ''
+  document.getElementsByClassName("tshirt sleeve-right-right")[0].style.backgroundColor = ''
+  document.getElementsByClassName("tshirt sleeve-left-left")[0].style.backgroundColor = ''
+  document.getElementsByClassName("tshirt mid-section-section")[0].style.backgroundColor = ''
+  context.strokeStyle = "#0000000";
+      context.fillStyle = '#ffffff';
+      context.fill();
+      context.stroke();
 }
-
-$(document).ready(function(){
-    getColors()
-});

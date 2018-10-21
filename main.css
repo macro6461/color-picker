@@ -18,6 +18,10 @@ body{
   position: relative;
 }
 
+canvas{
+  width: 535px; position: absolute; top: 152px; left: 114px; transform: rotate(21deg); color: red; z-index: 10; cursor: pointer;
+}
+
 .tshirt.mid-section{
   display: inline-block;
   margin: auto;
@@ -114,8 +118,10 @@ body{
 }
 
 button{
-  color: white;
-  background-color: cadetblue;
+  border: solid 1px cadetblue;
+  cursor: pointer;
+  color: cadetblue;
+  background-color: white;
   border-radius: 5px;
   margin-top: 20px;
   padding: 10px;
